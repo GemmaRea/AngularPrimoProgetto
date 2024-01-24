@@ -1,0 +1,15 @@
+article{
+    text-align: center; 
+    padding: 10 px
+   }
+   .mat-elevation-z8{
+    background-color:rgba(255, 255, 122, 0.281) ;
+   }
+   img{
+    max-width: 500px;
+    max-height: 350px;
+}
+
+.example-card{
+    margin: 10%
+}

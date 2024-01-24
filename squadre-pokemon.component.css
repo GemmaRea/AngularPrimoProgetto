@@ -1,0 +1,27 @@
+/*aggiungere colore di background*/
+.body{
+    background-color:rgba(255, 255, 122, 0.678);
+}
+/*centrare il titolo*/
+div{
+    text-align: center; 
+    padding: 10 px
+    
+   }
+/*visualizzare meglio le immagini*/
+img{
+    border-radius: 15%;
+    max-width: 500PX;
+    max-height: 400PX;
+    justify-items: center;
+}
+/*dara spazio a button*/
+button{
+    margin-right: 2rem;
+}
+
+   /* per visualizzare le img dei pokemon*/
+   .cardPokemon{
+    max-width: 200px;
+    max-height: 100px;
+   }

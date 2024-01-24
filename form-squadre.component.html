@@ -1,0 +1,131 @@
+<section class="body">
+  <div>
+    <h2>Benvenuto nella sezione di gestione dei Team</h2>
+    <br>
+    <p> Qui puoi decidere di modificare uno dei team gia presenti grazie all'indice, oppure crearne uno tutto tuo a TE
+      la SCELTA!</p>
+
+  </div>
+  
+  <form *ngIf="!visualizzaForm" class="example-form">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="inserire indice in caso di modifica" [(ngModel)]="indice" name="indiceModifica">
+    </mat-form-field>
+    <button (click)="crea()" mat-raised-button color="primary"
+      [disabled]="indice !== null && indice !== undefined">Crea</button>
+    <button (click)="modifica()" mat-raised-button color="warn" [disabled]="!indice">Modifica</button>
+  </form>
+<!-- 
+  <div *ngIf="visualizzaForm">
+    <form [formGroup]="actionForm" (ngSubmit)="inviaForm()">
+      <div>
+        <mat-form-field>
+          <label for="nomeTeam">Nome Team</label>
+          <input matInput type="text" id="nomeTeam" formControlName="nomeTeam">
+          <div class="text-danger"
+            *ngIf="actionForm.get('nomeTeam').invalid && (actionForm.get('nomeTeam').dirty || actionForm.get('nomeTeam').touched)">
+            <small>Inserisci un nome valido</small>
+          </div>
+        </mat-form-field>
+
+        <mat-form-field>
+          <label for="nomeAllenatore">Seleziona Allenatore</label>
+          <mat-select formControlName="nomeAllenatore">
+            <mat-option *ngFor="let allenatore of listaAllenatori" [value]="allenatore">
+              <mat-card>
+                <mat-card-title>{{ allenatore.nome }}</mat-card-title>
+                <img mat-card-image [src]="allenatore.image" alt="allenatore">
+              </mat-card>
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <label for="image">Inserisci l'URL del tuo team*</label>
+          <input matInput type="text" id="imageTeam" formControlName="imageTeam">
+          <div class="text-danger"
+            *ngIf="actionForm.get('imageTeam').invalid && (actionForm.get('imageTeam').dirty || actionForm.get('imageTeam').touched)">
+            <small>Inserisci un URL dell'avatar valido</small>
+          </div>
+        </mat-form-field>
+
+        <mat-form-field>
+          <label for="pokemon">Seleziona Pokemon</label>
+          <mat-select formControlName="pokemon" multiple>
+            <mat-option *ngFor="let pokemon of listaPokemon" [value]="pokemon">
+              <mat-card>
+                <mat-card-title>{{ pokemon.name }}</mat-card-title>
+                <img mat-card-image [src]="pokemon.image" alt="pokemon">
+              </mat-card>
+            </mat-option>
+          </mat-select>
+        </mat-form-field> -->
+
+  <!-- Il tasto di tipo submit si collega automaticamente alla funzione ngSubmit -->
+  <!-- <button mat-raised-button color="primary" type="submit" [disabled]="actionForm.invalid">Invia</button>
+        <button mat-raised-button type="button" (click)="annullaOperazione()">Indietro</button>
+      </div>
+    </form>
+  </div> -->
+
+  <div *ngIf="visualizzaForm">
+    <form [formGroup]="actionForm" (ngSubmit)="inviaForm()">
+      <mat-vertical-stepper>
+
+        <mat-step label="Nome Team">
+          <mat-form-field>
+            <label for="nomeTeam">Nome Team</label>
+            <input matInput type="text" id="nomeTeam" formControlName="nomeTeam">
+ 
+          </mat-form-field>
+          <button mat-raised-button color="primary" matStepperPrevius>INDIETRO</button>
+          <button mat-raised-button type="button" matStepperNext>AVANTI</button>
+        </mat-step>
+
+        <mat-step label="Scelta Allenatore">
+          <mat-form-field>
+            <label for="nomeAllenatore">Seleziona Allenatore</label>
+            <mat-select formControlName="nomeAllenatore">
+              <mat-option *ngFor="let allenatore of listaAllenatori" [value]="allenatore">
+                <mat-card>
+                  <mat-card-title>{{ allenatore.nome }}</mat-card-title>
+                  <img mat-card-image [src]="allenatore.image" alt="allenatore">
+                </mat-card>
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <button mat-raised-button color="primary" matStepperPrevius>INDIETRO</button>
+          <button mat-raised-button type="button" matStepperNext>AVANTI</button>
+        </mat-step>
+
+        <mat-step label="Immagine del team">
+          <mat-form-field>
+            <label for="image">Inserisci l'URL del tuo team*</label>
+            <input matInput type="text" id="imageTeam" formControlName="imageTeam">
+            
+          </mat-form-field>
+          <button mat-raised-button color="primary" matStepperPrevius>INDIETRO</button>
+          <button mat-raised-button type="button" matStepperNext>AVANTI</button>
+        </mat-step>
+
+        <mat-step label="Pokemon">
+          <mat-form-field>
+            <label for="pokemon">Seleziona Pokemon</label>
+            <mat-select formControlName="pokemon" multiple>
+              <mat-option *ngFor="let pokemon of listaPokemon" [value]="pokemon">
+                <mat-card>
+                  <mat-card-title>{{ pokemon.name }}</mat-card-title>
+                  <img mat-card-image [src]="pokemon.image" alt="pokemon">
+                </mat-card>
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <!-- Il tasto di tipo submit si collega automaticamente alla funzione ngSubmit -->
+          <button mat-raised-button color="primary" type="submit" [disabled]="actionForm.invalid">Invia</button>
+          <button mat-raised-button type="button" (click)="annullaOperazione()">Indietro</button>
+        </mat-step>
+      </mat-vertical-stepper>
+    </form>
+  </div>
+</section>

@@ -1,0 +1,78 @@
+<section class="body">
+    <div>
+        <h2>Benvenuto nella sezione Team</h2>
+        <br>
+        <p> Qui puoi visualizzare tutti i team,i pokemon a loro collegati,  o eliminarle </p>
+       
+    </div>
+    <mat-accordion>
+        <mat-expansion-panel *ngFor="let squadra of team,let i= index">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Nome team : {{squadra.nomeTeam}}
+                </mat-panel-title>
+                <mat-panel-description>
+                    Nome allenatore: {{squadra.nomeAllenatore.nome}}
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <img [src]="squadra.imageTeam" alt="foto team">
+            <div cols="1" *ngIf="varVisualizzaPokemon">
+                <mat-card *ngFor="let poke of squadra.pokemon">
+                    <mat-card-header>
+                        <mat-card-title>{{poke.name.toUpperCase()}}</mat-card-title>
+                    </mat-card-header>
+                    <img class="cardPokemon" mat-card-image [src]="poke.image" alt="pokemon">
+                    <mat-card-content>
+                        <p>{{poke.experience}} punti esperienza</p>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+            <mat-action-row>
+                <button  color="primary" (click)="visualizzaPokemon()" mat-flat-button> POKEMON </button>
+                <button color="primary" (click)="apriForm()" mat-flat-button>MODIFICA</button>
+                <button color="warn" (click)="eliminaTeam(i)" mat-flat-button>ELIMINA</button>
+            </mat-action-row>
+        </mat-expansion-panel>
+    </mat-accordion>
+</section>
+
+<!-- AVEVO PENSATO DI VISUALIZZARE I TEAM COME CARD MA LA VIEW NON MI SODDISFACEVA LASCIO IL CODE QUI COMMENTATO -->
+<!-- <section  class="body">
+    <div>
+        <h2>Benvenuto nella sezione Team</h2>
+        <br>
+        <p> Qui puoi visualizzare tutti i team,i pokemon a loro collegati, modificare le squadre o eliminarle </p>
+    </div> -->
+<!-- cols ="3" significa che ogni carte prende 3 colonne mentre rowspan serve per capire quante righe prende 
+    si portrebbe migliorare la visualizzazione perche le card sono troppo distanti -->
+<!-- <mat-grid-list cols="3" >
+        <mat-grid-tile rowspan ="2.5" *ngFor="let squadra of team,let i= index" colspan="1">
+            <mat-card >
+                <mat-card-header>
+                    <mat-card-title>Nome team : {{squadra.nomeTeam}}</mat-card-title>
+                    <mat-card-subtitle>Nome allenatore: {{squadra.nomeAllenatore.nome}}</mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image md [src]="squadra.imageTeam" alt="foto team">
+                <mat-card-actions align = "end">
+                    <button (click)="visualizzaPokemon()" color="primary" mat-flat-button> POKEMON
+
+                    </button>
+                    <button color="primary" (click)="apriForm()" mat-flat-button>MODIFICA</button>
+                    <button color="warn" (click)="eliminaTeam(i)" mat-flat-button>ELIMINA</button>
+                </mat-card-actions>
+                <div cols="1" *ngIf="varVisualizzaPokemon">
+                    <mat-card *ngFor="let poke of squadra.pokemon">
+                        <mat-card-header>
+                            <mat-card-title>{{poke.name.toUpperCase()}}</mat-card-title>
+                        </mat-card-header>
+                        <img  class="cardPokemon" mat-card-image [src]="poke.image" alt="Photo of a Shiba Inu">
+                        <mat-card-content>
+                            <p>{{poke.experience}} punti esperienza</p>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+  
+</section> -->

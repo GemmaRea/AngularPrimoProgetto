@@ -1,0 +1,27 @@
+mat-sidenav-container {
+  height: 100%;
+}
+
+mat-sidenav {
+  background-image: url("/assets/immagini/background-sidenav.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  margin-bottom: 5%;
+
+  color: white !important;
+  
+  width: 250px;
+  
+}
+
+mat-list-item {
+  cursor: pointer;
+  transition: rgba(255, 255, 122, 0.678);
+
+}
+
+mat-list-item:hover {
+  background-color: rgba(255, 255, 122, 0.678);
+  /* Cambia il colore al passaggio del mouse */
+}
